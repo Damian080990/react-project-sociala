@@ -140,6 +140,7 @@ export const Layout = ({ children }) => (
                                             <i className={`font-xl text-current ${morePage.icon} me-3`} />
                                             <span>{morePage.title}</span>
                                             {morePage.count !== 0 && <span className="circle-count bg-warning mt-1">{morePage.count}</span>}
+                                            {/* {morePage.count !== 0 ? <span className="circle-count bg-warning mt-1">{morePage.count}</span> : ""} */}
                                         </Link>
                                     </li>
                                 ))}
