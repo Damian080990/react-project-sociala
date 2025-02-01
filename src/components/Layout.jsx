@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { Notifications } from "./Notifications";
 
 // definiujemy tablice navlinks
 
@@ -46,6 +47,9 @@ export const Layout = ({ children }) => (
                     />
                 </NavLink>
             ))}
+
+            <Notifications />
+
             {/* DESKTOP MENU */}
             <Link
                 to="/defaultmessage"
@@ -57,7 +61,6 @@ export const Layout = ({ children }) => (
             <Link to="defaultsettings" className="p-0 ms-3 menu-icon">
                 <img src="assets/images/user.png" alt="user" className="w40 mt--1" />
             </Link>
-
 
         </div>
         {children}
