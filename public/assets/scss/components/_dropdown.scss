@@ -42,10 +42,8 @@ $dropdown-bg: $white !default;
 $dropdown-border-color: rgba($black, 0.15) !default;
 $dropdown-border-radius: 0.25rem !default;
 $dropdown-border-width: 1px !default;
-$dropdown-inner-border-radius: subtract(
-  $dropdown-border-radius,
-  $dropdown-border-width
-) !default;
+$dropdown-inner-border-radius: subtract($dropdown-border-radius,
+    $dropdown-border-width) !default;
 $dropdown-divider-bg: $dropdown-border-color !default;
 $dropdown-divider-margin-y: calc($def-size / 2) !default;
 $dropdown-box-shadow: $box-shadow !default;
@@ -80,7 +78,7 @@ $dropdown-header-padding: $dropdown-padding-y $dropdown-item-padding-x !default;
   z-index: 1000;
   display: none; // none by default, but block on "open" of the menu
   min-width: $dropdown-min-width;
-  padding: $dropdown-padding-y $dropdown-padding-x;
+
   margin: 0; // Override default margin of ul
   font-size: $dropdown-font-size;
   color: $dropdown-color;
@@ -125,6 +123,7 @@ $dropdown-header-padding: $dropdown-padding-y $dropdown-item-padding-x !default;
     }
   }
 }
+
 // scss-docs-end responsive-breakpoints
 
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
@@ -200,7 +199,7 @@ $dropdown-header-padding: $dropdown-padding-y $dropdown-item-padding-x !default;
 
   // Prevent dropdown overflow if there's no padding
   // See https://github.com/twbs/bootstrap/pull/27703
-  @if $dropdown-padding-y == 0 {
+  @if $dropdown-padding-y ==0 {
     &:first-child {
       @include border-top-radius($dropdown-inner-border-radius);
     }
