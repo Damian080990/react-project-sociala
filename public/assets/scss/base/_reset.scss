@@ -1,17 +1,17 @@
-* {
-  outline: none;
-  padding: 0;
+// * {
+//   outline: none;
+//   padding: 0;
 
-  &::after {
-    margin: 0;
-    padding: 0;
-  }
+//   &::after {
+//     margin: 0;
+//     padding: 0;
+//   }
 
-  &::before {
-    margin: 0;
-    padding: 0;
-  }
-}
+//   &::before {
+//     margin: 0;
+//     padding: 0;
+//   }
+// }
 
 body {
   line-height: 1.75;
@@ -21,6 +21,7 @@ body {
     position: fixed;
   }
 }
+
 h1,
 h2,
 h3,
@@ -35,6 +36,7 @@ h6,
 .h6 {
   font-weight: $headings-font-weight;
 }
+
 ul {
   padding: 0;
   margin: 0;
