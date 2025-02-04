@@ -1,4 +1,4 @@
-import { useState } from "react";
+import PropTypes from "prop-types";
 
 const userCardNotifications = [
     { name: 'Hendrix Stamp', notificationTime: '3 min', notificationMessage: 'There are many variations of pass..' },
@@ -9,32 +9,17 @@ const userCardNotifications = [
 
 ];
 
-export const Notifications = () => {
-    const [hasNotifications, setHasNotifications] = useState(false); //stan true albo false, domyslnie false
-
-    const toggleHasNotifications = () =>
-        setHasNotifications((prevHasNoti) => !prevHasNoti);
-
-    const notiClass = `${hasNotifications ? "show" : ""}`; //jezeli jest true to dodaje klase show w notiClass
-
+export const NotificationsDropDown = ({onClose}) => {
     return (
-        <>
-            <span
-                className={`p-2 cursor-pointer text-center ms-auto menu-icon ${notiClass}`}
-                id="dropdownMenu3"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                onClick={toggleHasNotifications}
-            >
-                <span className="dot-count bg-warning"></span>
-                <i className="feather-bell font-xl text-current"></i>
-            </span>
-            <div
-                className={`dropdown-menu p-7 right-0 rounded-xxl border-0 shadow-lg ${notiClass}`}
+        <div
+                className= 'dropdown-menu p-7 right-0 rounded-xxl border-0 shadow-lg show'
+                /* a11ly = accessibility - aria */
                 aria-labelledby="dropdownMenu3"
             >
+                <div className="flex justify-between items-center">  
                 <h4 className="fw-700 font-xss mb-4">Notification</h4>
-
+                <button onClick={onClose} className="cursor-pointer">X</button>
+                </div>
                 {userCardNotifications.map((userCardNotification) => (
                     <div key={userCardNotification.name} className="card bg-transparent-card w-100 border-0 ps-5 mb-3">
                         <img
@@ -56,6 +41,9 @@ export const Notifications = () => {
                 ))}
 
             </div>
-        </>
-    );
+    )
+}
+
+NotificationsDropDown.propTypes = {
+    onClose: PropTypes.func.isRequired
 };
