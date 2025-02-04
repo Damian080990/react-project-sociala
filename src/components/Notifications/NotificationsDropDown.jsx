@@ -1,15 +1,14 @@
 import PropTypes from "prop-types";
 
-const userCardNotifications = [
-    { name: 'Hendrix Stamp', notificationTime: '3 min', notificationMessage: 'There are many variations of pass..' },
-    { name: 'Goria Coast', notificationTime: '2 min', notificationMessage: 'Mobile Apps UI Designer is require..' },
-    { name: 'Surfiya Zakir', notificationTime: '1 min', notificationMessage: 'Mobile Apps UI Designer is require..' },
-    { name: 'Victor Exrixon', notificationTime: '30 sec', notificationMessage: 'Mobile Apps UI Designer is require..' },
-
-
-];
-
 export const NotificationsDropDown = ({onClose}) => {
+    const userCardNotifications = [
+        { name: 'Hendrix Stamp', notificationTime: '3 min', notificationMessage: 'There are many variations of pass..' },
+        { name: 'Goria Coast', notificationTime: '2 min', notificationMessage: 'Mobile Apps UI Designer is require..' },
+        { name: 'Surfiya Zakir', notificationTime: '1 min', notificationMessage: 'Mobile Apps UI Designer is require..' },
+        { name: 'Victor Exrixon', notificationTime: '30 sec', notificationMessage: 'Mobile Apps UI Designer is require..' },
+    
+    
+    ];
     return (
         <div
                 className= 'dropdown-menu p-7 right-0 rounded-xxl border-0 shadow-lg show'
