@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Layout } from "../components/Layout/Layout";
 import { Postview } from "../components/Postrview";
+import Loader from "../components/Loader";
+
 
 // const posts = [
 //     {
@@ -37,7 +39,6 @@ useEffect(() => {
       .then((data) => setPosts(data));
   }, []); //pobieranie danych z backendu
 
-  console.log('posts from Home component: ', posts);
   const updatedPosts = posts?.map((post) => {
     return {
       ...post,
@@ -53,9 +54,14 @@ return (
                 <div className="middle-sidebar-left">
                     <div className="row feed-body">
                         <div className="col-xl-8 col-xxl-9 col-lg-8">
-                            {updatedPosts && updatedPosts.length > 0 && updatedPosts.map((post) => (
-                                <Postview key={post.id} {...post} /> // uproszczony zapisa Mapowania +destrukturyzacja
-                            ))}
+                        {!updatedPosts || updatedPosts.length < 1 ? ( //DODANIE LOADERA PRZED ZALADOWANIE TRESCI
+                  <Loader />
+                ) : (
+                  updatedPosts.map((post) => (
+                    <Postview key={post.id} {...post} />
+                  ))
+                )}
+                            {/* <Loader /> */}
                         </div>
                     </div>
                 </div>
