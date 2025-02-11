@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Layout } from "../components/Layout/Layout";
 import { Postview } from "../components/Postrview";
 import Loader from "../components/Loader";
+import { Createpost } from "../components/Createpost";
 
 
 // const posts = [
@@ -31,12 +32,12 @@ import Loader from "../components/Loader";
 
 
 export const Home = () => {
-const [posts, setPosts] = useState();
-//HOOK
-useEffect(() => {
-    fetch("https://my.api.mockaroo.com/posts.json?key=6d1737e0")
+  const [posts, setPosts] = useState();
+  //HOOK
+  useEffect(() => {
+    fetch("https://my.api.mockaroo.com/posts.json?key=e1f51e30")
       .then((response) => response.json())
-      .then((data) => setPosts(data));
+      .then((data) => setPosts(data)); // DANE USTAWIAMY JAKO POSTY W STATE, DZIEKI TEMU SIE WYSWIETLAJA
   }, []); //pobieranie danych z backendu
 
   const updatedPosts = posts?.map((post) => {
@@ -46,26 +47,29 @@ useEffect(() => {
     };
   });
 
-return (
+  return (
     <Layout>
 
-        <div className="main-content right-chat-active">
-            <div className="middle-sidebar-bottom">
-                <div className="middle-sidebar-left">
-                    <div className="row feed-body">
-                        <div className="col-xl-8 col-xxl-9 col-lg-8">
-                        {!updatedPosts || updatedPosts.length < 1 ? ( //DODANIE LOADERA PRZED ZALADOWANIE TRESCI
+      <div className="main-content right-chat-active">
+        <div className="middle-sidebar-bottom">
+          <div className="middle-sidebar-left">
+            <div className="row feed-body">
+              <div className="col-xl-8 col-xxl-9 col-lg-8">
+                <Createpost />
+                {!updatedPosts ? ( //DODANIE LOADERA PRZED ZALADOWANIE TRESCI
+
                   <Loader />
                 ) : (
                   updatedPosts.map((post) => (
                     <Postview key={post.id} {...post} />
                   ))
                 )}
-                            {/* <Loader /> */}
-                        </div>
-                    </div>
-                </div>
+                {/* <Loader /> */}
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </Layout>
-)};
+  )
+};
