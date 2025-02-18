@@ -3,6 +3,7 @@ import { Layout } from "../components/Layout/Layout";
 import { Postview } from "../components/Postrview";
 import Loader from "../components/Loader";
 import { Createpost } from "../components/Createpost";
+import { Storyslider } from "../components/Storyslider";
 
 
 // const posts = [
@@ -32,7 +33,7 @@ import { Createpost } from "../components/Createpost";
 
 
 export const Home = () => {
-  const [posts, setPosts] = useState();
+  const [posts, setPosts] = useState(); //array
   //HOOK
   useEffect(() => {
     fetch("https://my.api.mockaroo.com/posts.json?key=e1f51e30")
@@ -40,7 +41,7 @@ export const Home = () => {
       .then((data) => setPosts(data)); // DANE USTAWIAMY JAKO POSTY W STATE, DZIEKI TEMU SIE WYSWIETLAJA
   }, []); //pobieranie danych z backendu
 
-  const updatedPosts = posts?.map((post) => {
+  const updatedPosts = posts?.map((post) => { //jezeli posty maja wartosc falsy to sie nie wyswietla
     return {
       ...post,
       postimage: `https://picsum.photos/id/${post.id}/800/400`,
@@ -55,6 +56,7 @@ export const Home = () => {
           <div className="middle-sidebar-left">
             <div className="row feed-body">
               <div className="col-xl-8 col-xxl-9 col-lg-8">
+                <Storyslider />
                 <Createpost />
                 {!updatedPosts ? ( //DODANIE LOADERA PRZED ZALADOWANIE TRESCI
 

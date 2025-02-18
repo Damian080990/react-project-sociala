@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-export const SideNavigation = ({navClass}) => {
+export const SideNavigation = ({ navClass }) => {
     const feedElements = [
         { title: "Newsfeed", to: "/", icon: "feather-tv", color: "blue" },
         { title: "Badges", to: "/defaultbadge", icon: "feather-award", color: "red" },
@@ -24,7 +24,7 @@ export const SideNavigation = ({navClass}) => {
             color: "primary",
         },
     ];
-    
+
     const morePages = [{
         title: 'Email Box', to: '/defaultemailbox', icon: 'feather-inbox', count: 584
     },
@@ -40,13 +40,15 @@ export const SideNavigation = ({navClass}) => {
     ];
 
     return (
-        
+
         <nav className={`navigation scroll-bar ${navClass}`}>
-        <div className="container ps-0 pe-0">
-            <div className="nav-content">
-                <div className="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1 mb-2 mt-2">
-                    <div className="nav-caption fw-600 font-xssss text-grey-500">
-                        <span>New </span>Feeds
+            <div className="container ps-0 pe-0">
+                <div className="nav-content">
+                    <div className="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1 mb-2 mt-2">
+                        <div className="nav-caption fw-600 font-xssss text-grey-500">
+                            <span>New </span>Feeds
+
+                        </div>
                         <ul className="mb-1 top-content">
                             {feedElements.map((feedElement) => (
                                 <li key={feedElement.to}>
@@ -64,36 +66,34 @@ export const SideNavigation = ({navClass}) => {
 
                         </ul>
                     </div>
-                </div>
 
-                {/* More Pages */}
-                <div className="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1 mb-2">
-                    <div className="nav-caption fw-600 font-xssss text-grey-500">
-                        <span>More </span>Pages
+                    {/* More Pages */}
+                    <div className="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1 mb-2">
+                        <div className="nav-caption fw-600 font-xssss text-grey-500">
+                            <span>More </span>Pages
+                        </div>
+                        <ul className="mb-3">
+                            {morePages.map((morePage) => (
+                                <li key={morePage.to}>
+                                    <Link
+                                        to={morePage.to}
+                                        className="nav-content-bttn open-font"
+                                    >
+                                        <i className={`font-xl text-current ${morePage.icon} me-3`} />
+                                        <span>{morePage.title}</span>
+                                        {morePage.count !== 0 && <span className="circle-count bg-warning mt-1">{morePage.count}</span>}
+                                        {/* {morePage.count !== 0 ? <span className="circle-count bg-warning mt-1">{morePage.count}</span> : ""} */}
+                                    </Link>
+                                </li>
+                            ))}
+
+                        </ul>
                     </div>
-                    <ul className="mb-3">
-                        {morePages.map((morePage) => (
-                            <li key={morePage.to}>
-                                <Link
-                                    to={morePage.to}
-                                    className="nav-content-bttn open-font"
-                                >
-                                    <i className={`font-xl text-current ${morePage.icon} me-3`} />
-                                    <span>{morePage.title}</span>
-                                    {morePage.count !== 0 && <span className="circle-count bg-warning mt-1">{morePage.count}</span>}
-                                    {/* {morePage.count !== 0 ? <span className="circle-count bg-warning mt-1">{morePage.count}</span> : ""} */}
-                                </Link>
-                            </li>
-                        ))}
 
-                    </ul>
                 </div>
-                {/* More Pages */}
-
             </div>
-        </div>
-    </nav>
-    
+        </nav>
+
     )
 }
 
